@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 const { getUserData } = require("./logic")
 
-app.get('https://gfgunofficial-api.onrender.com/data/:userID', async (req, res) => {
+app.get('/:userID', async (req, res) => {
    
 
     const user = req.params.userID
