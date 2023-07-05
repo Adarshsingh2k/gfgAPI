@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 const { getUserData } = require("./logic")
 
-app.get('/data/:userID', async (req, res) => {
+app.get('https://delicate-salmiakki-299bcd.netlify.app/data/:userID', async (req, res) => {
    
 
     const user = req.params.userID
