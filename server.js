@@ -16,7 +16,7 @@ app.get('/:userID', async (req, res) => {
 
         const combinedScores = await getUserData(user); // Retrieve only the combinedScores array
         console.log('Combined Scores:', combinedScores);
-        res.json({ combinedScores });
+        res.json( combinedScores );
 
 
     } catch (error) {
