@@ -99,6 +99,8 @@ try{
           combinedScores[valName] = scoreVal;
         }
       });
+      
+      combinedScores['username']=user
   
       console.log(combinedScores);
   
