@@ -30,55 +30,81 @@ try{
 
     let finishedData = {}
 
-    const combinedScores = [];
+    
+
+    const combinedScores = {};
     const scoreCardNames = [];
     const scoreCardValues = [];
 
-    $('.score_card_name').each((index, element) => {
-        const value = $(element).text();
-        scoreCardNames.push(value);
-    });
+    // $('.score_card_name').each((index, element) => {
+    //     const value = $(element).text();
+    //     scoreCardNames.push(value);
+    // });
 
-    $('.score_card_value').each((index, element) => {
-        const value = $(element).text();
-        scoreCardValues.push(value);
-    });
+    // $('.score_card_value').each((index, element) => {
+    //     const value = $(element).text();
+    //     scoreCardValues.push(value);
+    // });
 
-    console.log(scoreCardNames);
-    console.log(scoreCardValues);
+    // console.log(scoreCardNames);
+    // console.log(scoreCardValues);
 
-    // get total number of hard, medium, easy question solved
-    // solved_problem_section
-    // linksTypeProblem
+    // // get total number of hard, medium, easy question solved
+    // // solved_problem_section
+    // // linksTypeProblem
     const problemLevel=[]
-    $(".linksTypeProblem li").each((index, element) => {
-        const linkText = $(element).find("a").text();
-        problemLevel .push(linkText);
-      });
+    // $(".linksTypeProblem li").each((index, element) => {
+    //     const linkText = $(element).find("a").text();
+    //     problemLevel .push(linkText);
+    //   });
    
     
 
-    for (let i = 0; i < scoreCardNames.length; i++) {
-        const obj = {
-            valName: scoreCardNames[i],
-            scoreVal: scoreCardValues[i]
+    // for (let i = 0; i < scoreCardNames.length; i++) {
+    //     const obj = {
+    //         valName: scoreCardNames[i],
+    //         scoreVal: scoreCardValues[i]
 
-        }
-        combinedScores.push(obj);
-    }
+    //     }
+    //     combinedScores.push(obj);
+    // }
 
-    problemLevel.map(item => {
+    // problemLevel.map(item => {
+    //     const matches = item.match(/^(.*?)\s*\((\d+)\)$/);
+    //     if (matches) {
+    //       const valName = matches[1].trim();
+    //       const scoreVal = parseInt(matches[2]);
+    //       combinedScores.push({ valName, scoreVal });
+    //     } 
+    //   });
+
+    // console.log(combinedScores);
+
+    $('.score_card_name').each((index, element) => {
+        const name = $(element).text().trim();
+        const value = $(element).siblings('.score_card_value').text().trim();
+        combinedScores[name] = value;
+      });
+  
+      $(".linksTypeProblem li").each((index, element) => {
+        const linkText = $(element).find("a").text();
+        problemLevel.push(linkText);
+      });
+  
+      problemLevel.forEach(item => {
         const matches = item.match(/^(.*?)\s*\((\d+)\)$/);
         if (matches) {
           const valName = matches[1].trim();
           const scoreVal = parseInt(matches[2]);
-          combinedScores.push({ valName, scoreVal });
-        } 
+          combinedScores[valName] = scoreVal;
+        }
       });
+  
+      console.log(combinedScores);
+  
+      return combinedScores;
 
-    console.log(combinedScores);
-
-    return combinedScores;
+    // return combinedScores;
 }
 
 catch (error) {
