@@ -103,6 +103,7 @@ try{
       });
       
       combinedScores['username']=user
+      combinedScores['gfgLink']=apiUrl
   
       console.log(combinedScores);
   
