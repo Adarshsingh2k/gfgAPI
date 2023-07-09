@@ -83,7 +83,9 @@ try{
     $('.score_card_name').each((index, element) => {
         const name = $(element).text().trim();
         const value = $(element).siblings('.score_card_value').text().trim();
-        combinedScores[name] = value;
+        combinedScores[name.toLowerCase()
+          .replace(/ /g, '_')
+          .replace(/[^\w\s]/g, '')] = value;
       });
   
       $(".linksTypeProblem li").each((index, element) => {
